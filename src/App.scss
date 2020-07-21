@@ -1,0 +1,409 @@
+$color: rgba(243, 96, 96, 0.9);
+$colorFooter: #e787a2;
+@import url("https://fonts.googleapis.com/css?family=Trade+Winds&display=swap");
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+@keyframes dragon {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(2000px, -300px);
+  }
+}
+
+html {
+  background-color: #e787a2;
+}
+
+body {
+  background-image: url("./bgc.jpg");
+  background-size: 100%;
+}
+
+//ostylowanie animacji w headerze
+.header {
+  text-align: center;
+  color: $color;
+  border: 2px solid $color;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  font-family: "Trade Winds";
+
+  &:before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 6em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -7.5em;
+    transform: skewX(-45deg) translateX(0);
+    transition: none;
+  }
+  &:hover {
+    transition: 0.3s;
+    background-color: $color;
+    color: rgb(255, 255, 255);
+    &:before {
+      transform: skewX(-45deg) translateX(43em);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+
+.list-scroll {
+  display: none;
+  width: 1500px;
+  height: 1500px;
+  background-image: url("./scroll.png");
+  transform: scale(0.4);
+  position: absolute;
+  top: -420px;
+  left: 270px;
+  opacity: 0.85;
+  background-repeat: no-repeat;
+}
+
+.list-scroll-description {
+  height: auto;
+  word-wrap: break-word;
+  max-width: 100%;
+  font-size: 60px;
+  color: black;
+  font-family: "Trade Winds";
+  position: relative;
+  top: 250px;
+  left: 10px;
+  padding: 250px;
+  padding-top: 50px;
+  z-index: 100;
+}
+.itemWithoutMenu {
+  cursor: pointer;
+}
+
+.itemWithoutMenu:active + .list-scroll {
+  display: block;
+}
+
+.listContainer {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.header {
+  width: 555px;
+  background-color: rgba(1, 1, 1, 0.3);
+  color: rgb(206, 154, 168);
+  margin: 20px;
+  margin-bottom: 40px;
+  border-radius: 10px 5px 8px;
+  box-shadow: 0 0 15px black;
+  cursor: pointer;
+}
+
+.list {
+  color: #fff9f9; //kolor napisów w listach
+  width: 600px;
+
+  .list-item {
+    margin: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: rgba(5, 5, 5, 0.5);
+    border-radius: 10px 5px 8px;
+
+    .list-head {
+      font-size: 14px;
+      font-family: "Trade Winds";
+      padding-top: 2px !important;
+
+      .list-head-title {
+        color: rgb(255, 255, 255);
+        margin: 0px;
+      }
+
+      .head-item {
+        line-height: 10px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .list-item:hover {
+    box-shadow: 0 0 15px $color;
+    transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+.modal-title {
+  color: black;
+}
+
+.modal-button {
+  width: 100px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 15px 15px 15px;
+  display: inline-flex;
+  margin-left: 15%;
+  background-color: red;
+}
+
+.modal-button-text,
+.modal-title {
+  width: 100%;
+  text-align: center;
+  font-family: "Trade Winds";
+}
+
+.modal-button:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+.medalBackground,
+.addTaskBackground {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff77;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+.DeleteModal {
+  width: 500px;
+  height: 320px;
+  padding-top: 5px;
+  background-color: rgba(195, 7, 7, 0.726);
+  position: relative;
+  top: calc(50% - 150px);
+  left: calc(50% - 200px);
+  border-radius: 40px;
+  font-size: 40px;
+  font-family: "Trade Winds";
+  text-align: center;
+}
+
+.cancelDeleteModal,
+.deleteDeleteModal {
+  position: absolute;
+  font-size: 40px;
+  background-color: rgba(170, 84, 84, 0.61);
+  font-family: "Trade Winds";
+  border-radius: 20px;
+  border: solid 5px rgb(194, 138, 118);
+  cursor: pointer;
+}
+
+.cancelDeleteModal {
+  top: calc(50% + 50px);
+  left: calc(50% - 170px);
+}
+
+.deleteDeleteModal {
+  top: calc(50% + 50px);
+  right: calc(50% - 170px);
+}
+
+.questionDeleteModal {
+  font-size: 20px;
+  color: white;
+  font-family: "Trade Winds";
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 60px);
+  left: calc(50% - 190px);
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(182, 22, 22, 0.205);
+  padding: 5px;
+  border-radius: 20px;
+}
+.feather {
+  font-size: 20px;
+}
+.xRay {
+  font-size: 20px;
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.feather:hover,
+.xRay:hover {
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.editModal,
+.addTask {
+  width: 700px;
+  height: 370px;
+  background-color: rgba(109, 24, 24, 0.726);
+  position: fixed;
+  top: 200px;
+  right: 70px;
+  border-radius: 40px;
+  font-size: 20px;
+  padding: 20px;
+  font-family: "Trade Winds";
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.addTask {
+  height: 470px;
+}
+
+.editModalTitle {
+  background-color: transparent;
+  height: 50px;
+  border: none;
+  text-align: center;
+  font-size: 40px;
+  font-family: "Trade Winds";
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+.editModalDescription {
+  height: 150px;
+  font-size: 20px;
+  padding: 20px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-family: "Trade Winds";
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.cancelEditModal,
+.confirmEditModal,
+.cancelAddModal,
+.confirmAddModal {
+  position: absolute;
+  font-size: 40px;
+  background-color: rgba(170, 84, 84, 0.61);
+  font-family: "Trade Winds";
+  border-radius: 20px;
+  border: solid 5px rgb(194, 138, 118);
+  cursor: pointer;
+}
+
+.cancelEditModal,
+.cancelAddModal {
+  top: calc(50% + 100px);
+  left: calc(50% - 200px);
+}
+
+.confirmEditModal,
+.confirmAddModal {
+  top: calc(50% + 100px);
+  right: calc(50% - 200px);
+}
+
+.cancelAddModal,
+.confirmAddModal {
+  top: calc(50% + 160px);
+}
+
+.addTaskP {
+  font-size: 35px;
+  margin: 15px;
+}
+
+.dragon {
+  width: 800px;
+  height: 900px;
+  background-image: url("./dragon.gif");
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 100px;
+  left: -950px;
+  // display: none;
+}
+
+#header:hover > #dragon {
+  animation-name: dragon;
+  animation-duration: 3s;
+  animation-delay: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1s;
+}
+
+.addTitle,
+.addAuthor,
+.addDescription {
+  color: white;
+  background-color: rgba(77, 10, 10, 0.568);
+  font-size: 25px;
+  font-family: "Trade Winds";
+  border: none;
+  margin: 5px;
+  padding-left: 10px;
+}
+
+.katana {
+  background-image: url("./katana.png");
+  width: 100%;
+  height: 100%;
+  transform: scale(0.6, 0.6);
+  position: absolute;
+  top: 330px;
+  right: -400px;
+  background-repeat: no-repeat;
+}
+
+.footer {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  height: 70px;
+  width: 100vw;
+  background-color: $colorFooter;
+}
+
+.footer-p {
+  font-size: 25px;
+  margin-left: 10px;
+  color: black;
+}
+
+// .przyklad {
+//   &-xd {
+//   }
+// }
+
+.facebook {
+  background-image: url(./facebook.svg);
+  width: 50px;
+  margin: 15px;
+  height: 50px;
+  background-repeat: no-repeat;
+}
+
+.facebook:hover {
+  cursor: pointer;
+}
